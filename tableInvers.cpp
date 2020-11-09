@@ -51,6 +51,15 @@ void generatePermutation(std::string file1, std::string file2) {
     //Количество пропущенных заполненных
     int filled{ 0 };
     while (fin >> temp) {
+        beg = 0;
+        for (int j{ 0 }; j < size; ++j) {
+            if (perm[j] != -1)
+                ++beg;
+            else
+                break;
+        }
+        if (beg == size)
+            beg = 0;
         size = temp.size();
         //Очистка perm
         for (int i{ 0 }; i < size; ++i) {
@@ -64,19 +73,12 @@ void generatePermutation(std::string file1, std::string file2) {
                 }
             }
             perm[temp[i] + beg - '0' + filled] = i;
-            beg = 0;
-            for (int j{ 0 }; j < size; ++j) {
-                if (perm[j] != -1)
-                    ++beg;
-                else
-                    break;
-            }
+
         }
         for (int i{ 0 }; i < size; ++i) {
             fout << perm[i];
         }
         fout << endl;
-        beg = 0;
     }
     fout.close();
     fin.close();
