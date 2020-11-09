@@ -55,28 +55,22 @@ int generatePermutation(std::string file1, std::string file2) {
     int size{ 0 };
     //Первый пустой элемент в perm
     int beg{ 0 };
-    int t{ 0 };
-    while (fin >> temp){
+    //Количество пропущенных заполненных
+    int filled{ 0 };
+    while (fin >> temp) {
         size = temp.size();
         //Очистка perm
         for (int i{ 0 }; i < size; ++i) {
             perm[i] = -1;
         }
         for (int i{ 0 }; i < size; ++i) {
-            t = 0;
-            for (int k{ beg }; k < temp[i] + beg - '0'; ++k) {
+            filled = 0;
+            for (int k{ beg }; k <= temp[i] + beg - '0' + filled; ++k) {
                 if (perm[k] != -1) {
-                    ++t;
+                    ++filled;
                 }
             }
-            //perm[k] = i;
-            for (int k{ temp[i] + beg - '0' + t}; k < size; ++k) {
-                //Если место свободно
-                if (perm[k] == -1) {
-                    perm[k] = i;
-                    break;
-                }
-            }
+            perm[temp[i] + beg - '0' + filled] = i;
             beg = 0;
             for (int j{ 0 }; j < size; ++j) {
                 if (perm[j] != -1)
