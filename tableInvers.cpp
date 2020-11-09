@@ -76,7 +76,6 @@ int generatePermutation(std::string file1, std::string file2) {
                     perm[k] = i;
                     break;
                 }
-                else cout << ' ';
             }
             beg = 0;
             for (int j{ 0 }; j < size; ++j) {
