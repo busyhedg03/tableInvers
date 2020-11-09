@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 #include <fstream>
+#include <map>
 
 int createTable(int num, std::string filename) {
     using namespace std;
@@ -35,16 +36,8 @@ int createTable(int num, std::string filename) {
     fout.close();
     delete[] array;
 }
-#include <map>
-void move(char* arr, int size) {
-    using namespace std;
-    map <char, int> perm;
-    for (int i{ 0 }; i < size; ++i) {
 
-    }
-}
-
-int generatePermutation(std::string file1, std::string file2) {
+void generatePermutation(std::string file1, std::string file2) {
     using namespace std;
     ofstream fout(file2, std::ofstream::out | std::ofstream::trunc);
     ifstream fin(file1);
@@ -87,7 +80,6 @@ int generatePermutation(std::string file1, std::string file2) {
     }
     fout.close();
     fin.close();
-    return 0;
 }
 
 int main() {
